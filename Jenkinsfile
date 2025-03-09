@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Cloner le code') {
             steps {
-                git 'https://github.com/Adamacissokho4178/ProjetDevops.git'
+                // Spécifiez la branche "main"
+                git branch: 'main', url: 'https://github.com/Adamacissokho4178/ProjetDevops.git'
             }
         }
     }
