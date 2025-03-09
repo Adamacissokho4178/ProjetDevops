@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cours{% endblock %}
+
+{% block body %}
+    <h1>Liste des Cours</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du Cours</th>
+                <th>Code Cours</th>
+                <th>Nombre d'heures</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cours in cours %}
+                <tr>
+                    <td>{{ cours.nomCours }}</td>
+                    <td>{{ cours.codeCours }}</td>
+                    <td>{{ cours.nbHeures }}</td>
+                    <td>
+                        <a href="{{ path('cours_modifier', {id: cours.id}) }}">Modifier</a>
+                        <a href="{{ path('cours_supprimer', {id: cours.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce cours ?');">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cours_ajouter') }}">Ajouter un nouveau cours</a>
+{% endblock %}

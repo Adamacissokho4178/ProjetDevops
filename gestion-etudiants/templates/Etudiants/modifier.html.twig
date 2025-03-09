@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un Étudiant{% endblock %}
+
+{% block body %}
+<h1>Modifier un Étudiant</h1>
+
+<form method="post">
+    <label for="nom">Nom:</label>
+    <input type="text" name="nom" value="{{ etudiant.nom }}" required><br>
+
+    <label for="prenom">Prénom:</label>
+    <input type="text" name="prenom" value="{{ etudiant.prenom }}" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" value="{{ etudiant.email }}" required><br>
+
+    <label for="filiere">Filière:</label>
+    <input type="text" name="filiere" value="{{ etudiant.filiere }}" required><br>
+
+    <button type="submit">Modifier</button>
+</form>
+
+{% endblock %}

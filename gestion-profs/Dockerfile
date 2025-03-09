@@ -1,0 +1,39 @@
+# Remplace l'image de base par PHP 8.3
+FROM php:8.3-fpm
+
+# Mettre à jour les paquets et nettoyer les anciens indices
+RUN apt-get clean && apt-get update
+
+# Installer les extensions nécessaires
+RUN apt-get install -y \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    libzip-dev \
+    git \
+    unzip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd zip pdo pdo_mysql \
+    && pecl install apcu \
+    && docker-php-ext-enable apcu
+
+# Copier Composer depuis l'image officielle de Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Ajouter la variable d'environnement pour permettre à Composer d'exécuter des plugins en tant que root
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+# Définir le répertoire de travail
+WORKDIR /var/www
+
+# Copier le code de l'application dans le conteneur
+COPY . .
+
+# Installer les dépendances PHP via Composer
+RUN composer install --no-interaction --prefer-dist
+
+# Exposer le port 9000 pour PHP-FPM
+EXPOSE 9000
+
+# Commande pour lancer PHP-FPM
+CMD ["php-fpm"]

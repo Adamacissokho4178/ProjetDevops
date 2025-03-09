@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Classes</title>
+    <style>
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Corps de la page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5C5C8; /* Couleur de fond rose clair */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Conteneur principal */
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        /* Titre */
+        h1 {
+            margin-bottom: 20px;
+            color: #A44B51; /* Couleur rose foncé */
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Conteneur des boutons */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        /* Styles des boutons */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #A44B51; /* Couleur rose foncé */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #8A3B42; /* Une nuance de rose foncé plus intense */
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            background-color: #7C2C33; /* Une nuance encore plus foncée */
+            transform: scale(0.98);
+        }
+        
+        /* Bouton accueil avec une couleur différente */
+        .btn-home {
+            background-color: #F5C5C8; /* Rose clair */
+        }
+
+        .btn-home:hover {
+            background-color: #F0A6AC; /* Une nuance légèrement plus foncée */
+        }
+
+        .btn-home:active {
+            background-color: #E88F97; /* Encore plus foncé */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestion des Classes</h1>
+        <div class="buttons">
+            <a href="{{ path('classes_ajouter') }}" class="btn">Ajouter des Classes</a>
+            <a href="{{ path('afficher') }}" class="btn">Afficher des Classes</a>
+        </div>
+    </div>
+</body>
+</html>
