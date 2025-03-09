@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Cloner le code') {
             steps {
-                git 'https://github.com/Limatou4/gestionEtablissement.git'
+                git 'https://github.com/Adamacissokho4178/ProjetDevops.git'
             }
         }
     }
